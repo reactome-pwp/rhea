@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module rename-to='widgettest'>
+  <inherits name="uk.ac.ebi.pwp.widgets.rhea.Rhea" />
+
+  <!-- Specify the app entry point class.                         -->
+  <entry-point class='uk.ac.ebi.pwp.widgets.test.WidgetTest'/>
+
+  <!-- Specify the paths for translatable code                    -->
+  <source path='rhea'/>
+  <source path='test'/>
+</module>

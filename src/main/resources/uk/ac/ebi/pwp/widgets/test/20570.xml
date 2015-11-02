@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<reaction xmlns="http://www.xml-cml.org/schema/cml2/react" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="20570" convention="rhea:direction.LR" title="RHEA:20570" xsi:schemaLocation="http://www.xml-cml.org/schema/cml2/react http://www.ebi.ac.uk/rhea/rest/1.0/schema/ext/cmlreact/cmlreact.xsd">
+    <label value="Mapped"/>
+    <label value="Formuled"/>
+    <label value="Chemically balanced"/>
+    <name>L-arginine + H2O =&gt; L-ornithine + urea</name>
+    <identifier value="RHEA:20570"/>
+    <reactantList>
+        <reactant count="1.0" title="L-arginine">
+            <molecule formalCharge="1" formula="C 6 H 15 N 4 O 2">
+                <name>L-arginine</name>
+                <identifier value="CHEBI:32682"/>
+            </molecule>
+        </reactant>
+        <reactant count="1.0" title="H2O">
+            <molecule formalCharge="0" formula="H 2 O 1">
+                <name>H2O</name>
+                <identifier value="CHEBI:15377"/>
+            </molecule>
+        </reactant>
+    </reactantList>
+    <productList>
+        <product title="L-ornithine" count="1.0">
+            <molecule formalCharge="1" formula="C 5 H 13 N 2 O 2">
+                <name>L-ornithine</name>
+                <identifier value="CHEBI:46911"/>
+            </molecule>
+        </product>
+        <product title="urea" count="1.0">
+            <molecule formalCharge="0" formula="C 1 H 4 N 2 O 1">
+                <name>urea</name>
+                <identifier value="CHEBI:16199"/>
+            </molecule>
+        </product>
+    </productList>
+    <map id="RHEA:xRefs">
+        <link href="http://www.grenoble.prabi.fr/obiwarehouse/unipathway?upid=UER00270" title="UER00270" id="up:UER00270" linkType="locator"/>
+        <link href="http://www.reactome.org/cgi-bin/eventbrowser_st_id?ST_ID=REACT_21325.2" title="REACT_21325.2" id="rctm:REACT_21325.2" linkType="locator"/>
+        <link href="http://www.reactome.org/cgi-bin/eventbrowser_st_id?ST_ID=REACT_394.4" title="REACT_394.4" id="rctm:REACT_394.4" linkType="locator"/>
+        <link href="http://www.ebi.ac.uk/intenz/query?cmd=SearchID&amp;id=4289" title="3.5.3.1" id="intenz:4289" linkType="locator"/>
+        <link href="http://www.grenoble.prabi.fr/obiwarehouse/unipathway?upid=UCR00551" title="UCR00551" id="up:UCR00551" linkType="locator"/>
+        <link href="http://www.genome.jp/dbget-bin/www_bget?rn:R00551" title="R00551" id="kr:R00551" linkType="locator"/>
+        <link href="http://biocyc.org/META/NEW-IMAGE?type=REACTION&amp;object=ARGINASE-RXN" title="ARGINASE-RXN" id="mcyc:ARGINASE-RXN" linkType="locator"/>
+        <link href="http://www.ebi.ac.uk/chebi/searchId.do?chebiId=CHEBI:32682" title="L-arginine" id="chebi:32682" from="CHEBI:32682" linkType="locator"/>
+        <link href="http://www.ebi.ac.uk/chebi/searchId.do?chebiId=CHEBI:15377" title="H2O" id="chebi:15377" from="CHEBI:15377" linkType="locator"/>
+        <link href="http://www.ebi.ac.uk/chebi/searchId.do?chebiId=CHEBI:46911" title="L-ornithine" id="chebi:46911" from="CHEBI:46911" linkType="locator"/>
+        <link href="http://www.ebi.ac.uk/chebi/searchId.do?chebiId=CHEBI:16199" title="urea" id="chebi:16199" from="CHEBI:16199" linkType="locator"/>
+    </map>
+    <map id="RHEA:relatedReactions">
+        <link href="http://www.ebi.ac.uk/rhea/reaction.xhtml?id=20569" convention="rhea:direction.UN" title="RHEA:20569" id="RHEA:20569" linkType="locator"/>
+        <link href="http://www.ebi.ac.uk/rhea/reaction.xhtml?id=20571" convention="rhea:direction.RL" title="RHEA:20571" id="RHEA:20571" linkType="locator"/>
+        <link href="http://www.ebi.ac.uk/rhea/reaction.xhtml?id=20572" convention="rhea:direction.BI" title="RHEA:20572" id="RHEA:20572" linkType="locator"/>
+    </map>
+</reaction>
