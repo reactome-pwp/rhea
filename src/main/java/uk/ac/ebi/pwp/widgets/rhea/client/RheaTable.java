@@ -15,7 +15,7 @@ public class RheaTable extends Composite {
 
     public RheaTable(Reaction reaction) {
         this.table = new FlexTable();
-        this.table.setCellSpacing(20);
+        this.table.setCellSpacing(1);
         initialize(reaction);
         setWidth("100%");
     }
