@@ -64,9 +64,11 @@ public class RheaTable extends Composite {
     }
 
     private Widget getImage(Molecule molecule){
-        String url = "http://www.ebi.ac.uk/chebi/displayImage.do?defaultImage=true&chebiId=" + molecule.getId() + "&dimensions=200&scaleMolecule=true&transbg=true";
+        String url = "http://www.ebi.ac.uk/rhea/compoundImage.xhtml?dimensions=200&chebiId=" + molecule.getId();
+//        String url = "http://www.ebi.ac.uk/chebi/displayImage.do?defaultImage=true&chebiId=" + molecule.getId() + "&dimensions=200&scaleMolecule=true&transbg=true";
         Image image = new Image(url);
         image.getElement().getStyle().setBorderWidth(0, Style.Unit.PX);
+        image.getElement().getStyle().setProperty("border","1px solid grey");
         Anchor anchor = new Anchor("", "http://www.ebi.ac.uk/chebi/searchId.do?chebiId=" + molecule.getId() + "&conversationContext=2", "_blank");
         DOM.insertBefore(anchor.getElement(), image.getElement(), DOM.getFirstChild(anchor.getElement()));
         return anchor;
