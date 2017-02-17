@@ -18,6 +18,9 @@ public class RheaTable extends Composite {
         this.table.setCellSpacing(1);
         initialize(reaction);
         setWidth("100%");
+        getElement().getStyle().setBackgroundColor("white");
+        getElement().getStyle().setProperty("borderRadius","10px");
+        getElement().getStyle().setProperty("border", "solid 1px grey");
     }
 
     private void initialize(Reaction reaction){
@@ -68,7 +71,7 @@ public class RheaTable extends Composite {
 //        String url = "http://www.ebi.ac.uk/chebi/displayImage.do?defaultImage=true&chebiId=" + molecule.getId() + "&dimensions=200&scaleMolecule=true&transbg=true";
         Image image = new Image(url);
         image.getElement().getStyle().setBorderWidth(0, Style.Unit.PX);
-        image.getElement().getStyle().setProperty("border","1px solid grey");
+//        image.getElement().getStyle().setProperty("border","1px solid grey");
         Anchor anchor = new Anchor("", "http://www.ebi.ac.uk/chebi/searchId.do?chebiId=" + molecule.getId() + "&conversationContext=2", "_blank");
         DOM.insertBefore(anchor.getElement(), image.getElement(), DOM.getFirstChild(anchor.getElement()));
         return anchor;
