@@ -89,6 +89,7 @@ public class RheaViewer extends Composite implements HasHandlers, ReactionRetrie
         this.container.add(anchor);
 
         this.container.add(new RheaTable(r));
+        this.container.getElement().getStyle().setPadding(15, Style.Unit.PX);
         fireEvent(new ReactionStructureLoadedEvent());
     }
 }
