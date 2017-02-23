@@ -84,7 +84,7 @@ public class RheaViewer extends Composite implements HasHandlers, ReactionRetrie
     private void showReaction(Reaction r){
         this.container.clear();
 
-        Anchor anchor = new Anchor(r.getIdentifier(), "http://www.ebi.ac.uk/rhea/reaction.xhtml?id=" + r.getIdentifier(), "_blank");
+        Anchor anchor = new Anchor(r.getIdentifier(), "//www.rhea-db.org/reaction?id=" + r.getIdentifier(), "_blank");
         anchor.setTitle(r.getName());
         this.container.add(anchor);
 
