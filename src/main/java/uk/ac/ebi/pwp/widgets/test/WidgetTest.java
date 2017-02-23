@@ -3,7 +3,6 @@ package uk.ac.ebi.pwp.widgets.test;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.RunAsyncCallback;
-import com.google.gwt.resources.client.TextResource;
 import com.google.gwt.user.client.ui.RootPanel;
 import uk.ac.ebi.pwp.widgets.rhea.client.RheaViewer;
 
@@ -23,8 +22,7 @@ public class WidgetTest implements EntryPoint {
 
             @SuppressWarnings("unchecked")
             public void onSuccess() {
-                TextResource xml = Resources.INSTANCE.responseText();
-                RootPanel.get(PLACE_HOLDER).add(new RheaViewer(xml));
+                RootPanel.get(PLACE_HOLDER).add(new RheaViewer("23725"));
             }
         });
     }
