@@ -14,10 +14,12 @@ import uk.ac.ebi.pwp.widgets.rhea.model.Reaction;
  */
 public final class ReactionFactory {
 
+    public static String version = "" + System.currentTimeMillis(); //UNIQUE per session
+
     public final static Integer TIME_OUT = 4000;
 
     public static void getReaction(String rheaId, final ReactionRetrievedHandler handler) {
-        String uri = "rhea/rest/1.0/ws/reaction/cmlreact/" + rheaId; //25278
+        String uri = "rhea/rest/1.0/ws/reaction/cmlreact/" + rheaId + "?v=" + version; //25278
         RequestBuilder requestBuilder = new RequestBuilder(RequestBuilder.GET, uri);
         requestBuilder.setTimeoutMillis(TIME_OUT);
         try {
