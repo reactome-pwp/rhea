@@ -22,9 +22,9 @@ import uk.ac.ebi.pwp.widgets.rhea.model.Reaction;
 public class RheaViewer extends Composite implements HasHandlers, ReactionRetrievedHandler {
     VerticalPanel container;
 
-    public RheaViewer(TextResource xml) {
+    public RheaViewer(TextResource json) {
         initialize();
-        showReaction(ReactionFactory.getReaction(xml));
+        showReaction(ReactionFactory.getReaction(json));
     }
 
     public RheaViewer(String rheaId) {
@@ -32,7 +32,7 @@ public class RheaViewer extends Composite implements HasHandlers, ReactionRetrie
         ReactionFactory.getReaction(rheaId, this);
     }
 
-    public HandlerRegistration addStructureLoadedHandler(ReactionStructureLoadedHandler handler){
+    public HandlerRegistration addStructureLoadedHandler(ReactionStructureLoadedHandler handler) {
         return this.addHandler(handler, ReactionStructureLoadedEvent.TYPE);
     }
 
@@ -40,7 +40,7 @@ public class RheaViewer extends Composite implements HasHandlers, ReactionRetrie
         return this.addHandler(handler, ReactionStructureNotAvailableEvent.TYPE);
     }
 
-    public static Widget getMessage(ImageResource imageResource, String customMessage){
+    public static Widget getMessage(ImageResource imageResource, String customMessage) {
         HorizontalPanel hp = new HorizontalPanel();
         hp.setSpacing(5);
 
@@ -54,7 +54,7 @@ public class RheaViewer extends Composite implements HasHandlers, ReactionRetrie
         return hp;
     }
 
-    private void initialize(){
+    private void initialize() {
         this.container = new VerticalPanel();
         container.setWidth("100%");
         //noinspection GWTStyleCheck
@@ -75,17 +75,17 @@ public class RheaViewer extends Composite implements HasHandlers, ReactionRetrie
         this.showErrorMessage(exception.getMessage());
     }
 
-    private void showErrorMessage(String msg){
+    private void showErrorMessage(String msg) {
         this.container.clear();
         this.container.add(getMessage(Images.INSTANCE.getAlertImage(), msg));
         fireEvent(new ReactionStructureNotAvailableEvent());
     }
 
-    private void showReaction(Reaction r){
+    private void showReaction(Reaction r) {
         this.container.clear();
 
-        Anchor anchor = new Anchor(r.getIdentifier(), "//www.rhea-db.org/reaction?id=" + r.getIdentifier(), "_blank");
-        anchor.setTitle(r.getName());
+        Anchor anchor = new Anchor(r.getEquation(), "//www.rhea-db.org/reaction?id=" + r.getId(), "_blank");
+        anchor.setTitle(r.getId());
         this.container.add(anchor);
 
         this.container.add(new RheaTable(r));

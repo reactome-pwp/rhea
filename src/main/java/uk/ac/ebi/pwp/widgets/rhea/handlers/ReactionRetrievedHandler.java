@@ -9,6 +9,7 @@ import uk.ac.ebi.pwp.widgets.rhea.events.ReactionRetrievedEvent;
 public interface ReactionRetrievedHandler extends EventHandler {
 
     void onReactionRetrieved(ReactionRetrievedEvent event);
+
     void onReactionFactoryError(Throwable exception);
 
 }

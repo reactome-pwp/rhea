@@ -1,5 +1,6 @@
 package uk.ac.ebi.pwp.widgets.rhea.client;
 
+import com.google.gwt.core.client.JsArray;
 import com.google.gwt.dom.client.Style;
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.ui.*;
@@ -11,7 +12,7 @@ import uk.ac.ebi.pwp.widgets.rhea.model.Reaction;
  * @author Antonio Fabregat <fabregat@ebi.ac.uk>
  */
 public class RheaTable extends Composite {
-    private HTMLTable table;
+    private final HTMLTable table;
 
     public RheaTable(Reaction reaction) {
         this.table = new FlexTable();
@@ -19,18 +20,22 @@ public class RheaTable extends Composite {
         initialize(reaction);
         setWidth("100%");
         getElement().getStyle().setBackgroundColor("white");
-        getElement().getStyle().setProperty("borderRadius","10px");
+        getElement().getStyle().setProperty("borderRadius", "10px");
         getElement().getStyle().setProperty("border", "solid 1px grey");
     }
 
-    private void initialize(Reaction reaction){
-        int i=0; int rsize = reaction.getReactantList().size();
-        for (Chemical chemical : reaction.getReactantList()) {
-            this.addChemical(chemical, ++i < rsize ? "+" : "=>");
+    private void initialize(Reaction reaction) {
+
+        JsArray<Chemical> reactantList = reaction.getReactantList();
+        int rsize = reactantList.length();
+        for (int i = 0; i < rsize; i++) {
+            this.addChemical(reactantList.get(i), i + 1 < rsize ? "+" : "=>");
         }
-        int j=0; int psize = reaction.getProductList().size();
-        for (Chemical chemical : reaction.getProductList()) {
-            this.addChemical(chemical, ++j < psize ? "+" : "");
+
+        JsArray<Chemical> productList = reaction.getProductList();
+        int psize = productList.length();
+        for (int j = 0; j < psize; j++) {
+            this.addChemical(productList.get(j), j + 1 < psize ? "+" : "");
         }
 
         //DEFINE ALIGNMENT
@@ -42,31 +47,27 @@ public class RheaTable extends Composite {
         initWidget(this.table);
     }
 
-    private void addChemical(Chemical chemical, String symbol){
-        int row=0;
+    private void addChemical(Chemical chemical, String symbol) {
+        int row = 0;
         int col = this.table.getRowCount() == 0 ? 0 : this.table.getCellCount(0);
 
-        this.table.setWidget(row++, col, new Label(chemical.getTitle()));
-        if(!symbol.isEmpty()){
-            this.table.setWidget(row-1, col+1, this.getSymbol(symbol));
-        }
-
-        this.table.setWidget(row++, col, this.getAnchor(chemical.getMolecule()));
-        if(!symbol.isEmpty()){
-            this.table.setWidget(row-1, col+1, this.getSymbol(symbol));
-        }
-
-        this.table.setWidget(row++, col, this.getImage(chemical.getMolecule()));
-        if(!symbol.isEmpty()){
-            this.table.setWidget(row-1, col+1, this.getSymbol(symbol));
+        for (Widget widget : new Widget[]{
+                new Label(chemical.getLabel()),
+                this.getAnchor(chemical),
+                this.getImage(chemical)}) {
+            boolean hasCount = chemical.getCount() != null;
+            if (hasCount) this.table.setWidget(row, col, this.getSymbol(chemical.getCount()));
+            this.table.setWidget(row, hasCount ? col + 1 : col, widget);
+            if (!symbol.isEmpty()) this.table.setWidget(row, hasCount ? col + 2 : col + 1, this.getSymbol(symbol));
+            row++;
         }
     }
 
-    private Widget getAnchor(Molecule molecule){
+    private Widget getAnchor(Molecule molecule) {
         return new Anchor(molecule.getId(), "http://www.ebi.ac.uk/chebi/searchId.do?chebiId=" + molecule.getId() + "&conversationContext=2", "_blank");
     }
 
-    private Widget getImage(Molecule molecule){
+    private Widget getImage(Molecule molecule) {
         String url = "http://www.rhea-db.org/compoundImage.xhtml?dimensions=200&chebiId=" + molecule.getId();
         Image image = new Image(url);
         image.getElement().getStyle().setBorderWidth(0, Style.Unit.PX);
@@ -75,7 +76,7 @@ public class RheaTable extends Composite {
         return anchor;
     }
 
-    private Widget getSymbol(String symbol){
+    private Widget getSymbol(String symbol) {
         Label l = new Label(symbol);
         l.getElement().getStyle().setFontWeight(Style.FontWeight.BOLD);
         return l;
