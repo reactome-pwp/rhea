@@ -17,7 +17,7 @@ public final class ReactionFactory {
     public final static Integer TIME_OUT = 4000;
 
     public static void getReaction(String rheaId, final ReactionRetrievedHandler handler) {
-        String uri = "rhea/" + rheaId + "/json";
+        String uri = "https://www.rhea-db.org/rhea/" + rheaId + "/json";
         RequestBuilder requestBuilder = new RequestBuilder(RequestBuilder.GET, uri);
         requestBuilder.setTimeoutMillis(TIME_OUT);
         try {
