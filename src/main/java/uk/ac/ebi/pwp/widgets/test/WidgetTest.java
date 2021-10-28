@@ -23,7 +23,7 @@ public class WidgetTest implements EntryPoint {
             @SuppressWarnings("unchecked")
             public void onSuccess() {
                 // HINT: rhea enforces https. To test properly use safari and disable CORS restrictions
-                RootPanel.get(PLACE_HOLDER).add(new RheaViewer("23725"));
+                RootPanel.get(PLACE_HOLDER).add(new RheaViewer("20696"));
             }
         });
     }

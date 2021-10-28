@@ -1,62 +1,36 @@
 package uk.ac.ebi.pwp.widgets.rhea.model;
 
-import java.util.Collection;
-import java.util.LinkedList;
-import java.util.List;
+import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.core.client.JsArray;
 
 /**
  * @author Antonio Fabregat <fabregat@ebi.ac.uk>
  */
-public class Reaction {
-    String name;
-    String identifier;
-    List<Chemical> reactantList = new LinkedList<Chemical>();
-    List<Chemical> productList = new LinkedList<Chemical>();
-
-    public Reaction(String name, String identifier) {
-        this.name = name;
-        this.identifier = identifier;
+public class Reaction extends JavaScriptObject {
+    protected Reaction() {
     }
 
-    public void addReactant(Chemical chemical){
-        this.reactantList.add(chemical);
-    }
+    public final native String getId() /*-{
+        return this.id;
+    }-*/;
 
-    public void addReactants(Collection<Chemical> reactantList){
-        this.reactantList.addAll(reactantList);
-    }
+    public final native String getEquation() /*-{
+        return this.equation;
+    }-*/;
 
-    public void addProduct(Chemical chemical){
-        this.productList.add(chemical);
-    }
+    public final native String getHTMLEquation() /*-{
+        return this.htmlequation;
+    }-*/;
 
-    public void addProducts(Collection<Chemical> productList){
-        this.productList.addAll(productList);
-    }
+    public final native String getStatus() /*-{
+        return this.status;
+    }-*/;
 
-    public String getIdentifier() {
-        return identifier;
-    }
+    public final native JsArray<Chemical> getReactantList() /*-{
+        return this.left;
+    }-*/;
 
-    public String getName() {
-        return name;
-    }
-
-    public List<Chemical> getReactantList() {
-        return reactantList;
-    }
-
-    public List<Chemical> getProductList() {
-        return productList;
-    }
-
-    @Override
-    public String toString() {
-        return "Reaction{" +
-                "name='" + name + '\'' +
-                ", identifier='" + identifier + '\'' +
-                ", reactantList=" + reactantList +
-                ", productList=" + productList +
-                '}';
-    }
+    public final native JsArray<Chemical> getProductList() /*-{
+        return this.right;
+    }-*/;
 }

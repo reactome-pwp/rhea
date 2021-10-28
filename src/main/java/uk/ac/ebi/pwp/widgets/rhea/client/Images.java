@@ -9,7 +9,7 @@ import com.google.gwt.resources.client.ImageResource;
  */
 interface Images extends ClientBundle {
 
-    public Images INSTANCE = GWT.create(Images.class);
+    Images INSTANCE = GWT.create(Images.class);
 
     @Source("images/alert.png")
     ImageResource getAlertImage();
